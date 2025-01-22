@@ -14,16 +14,25 @@ the function below should be the only one in this file.
 
 /* Add a prototype for a helper function here if you need */
 void push_front(Node*& list, Node*& item);
+
 void split(Node*& in, Node*& odds, Node*& evens)
 {
   /* Add code here */
 // WRITE YOUR CODE HERE
+
+  //Base case, will return if the list is empty
   if(in == nullptr)
     return;
+
+  //Recursive step
   split(in->next, odds, evens);
+  
+  //Isolates current node from the list
   Node* temp = in;
   temp->next = nullptr;
   in = nullptr;
+
+  //Adds item to the apporpriate list
   if(temp->value % 2 == 0){
     push_front(evens, temp);
   } else {
